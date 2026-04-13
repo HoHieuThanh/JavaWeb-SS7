@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Món ngon mỗi ngày</title>
+</head>
+<body>
+
+<h2>Món ngon mỗi ngày</h2>
+
+<p style="color:red" th:text="${error}"></p>
+<p style="color:green" th:text="${success}"></p>
+
+<form th:action="@{/daily/save}"
+      th:object="${dailyDish}"
+      method="post"
+      enctype="multipart/form-data">
+
+  <label>Tên món:</label>
+  <input type="text" th:field="*{name}" />
+  <br/>
+
+  <label>Danh mục:</label>
+  <select th:field="*{category}">
+    <option th:each="c : ${categories}"
+            th:value="${c}"
+            th:text="${c}">
+    </option>
+  </select>
+  <br/>
+
+  <label>Banner:</label>
+  <input type="file" name="bannerFile"/>
+  <br/><br/>
+
+  <button type="submit">Lưu</button>
+
+</form>
+
+</body>
+</html>

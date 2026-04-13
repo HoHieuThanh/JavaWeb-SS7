@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tạo Combo</title>
+</head>
+<body>
+
+<h2>Tạo Siêu Combo</h2>
+
+<p style="color:red" th:text="${error}"></p>
+<p style="color:green" th:text="${success}"></p>
+
+<form th:action="@{/bai5/add}" method="post" enctype="multipart/form-data">
+
+  <label>Chọn món:</label><br/>
+  <div th:each="f : ${foods}">
+    <input type="checkbox" name="items" th:value="${f}"/>
+    <span th:text="${f}"></span><br/>
+  </div>
+
+  <br/>
+
+  <label>Banner:</label>
+  <input type="file" name="banner"/>
+
+  <br/><br/>
+
+  <button type="submit">Tạo Combo</button>
+
+</form>
+
+</body>
+</html>
